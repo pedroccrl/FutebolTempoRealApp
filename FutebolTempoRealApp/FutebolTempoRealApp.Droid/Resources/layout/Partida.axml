@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout1"
+        android:layout_marginLeft="12px"
+        android:layout_marginRight="12px">
+        <RelativeLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout2"
+            android:gravity="center"
+            android:layout_toLeftOf="@+id/relativeLayout3"
+            android:layout_alignBottom="@+id/relativeLayout3"
+            android:layout_alignTop="@+id/relativeLayout3">
+            <TextView
+                android:text="TIME CASA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/PartidaTxtTimeCasa"
+                android:textSize="16dip"
+                android:textStyle="bold"
+                android:gravity="center" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:minWidth="128px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout3"
+            android:layout_centerInParent="true">
+            <ImageView
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/PartidaImgEscudoCasa"
+                android:layout_centerVertical="true"
+                android:layout_margin="8px"
+                android:layout_toLeftOf="@+id/PartidaTxtPlacar" />
+            <TextView
+                android:text="0 x 0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/PartidaTxtPlacar"
+                android:textSize="20dip"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_centerInParent="true" />
+            <ImageView
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/PartidaTxtPlacar"
+                android:id="@+id/PartidaImgEscudoVisit"
+                android:layout_centerVertical="true"
+                android:layout_margin="8px" />
+            <TextView
+                android:text="(0 x 0)"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/PartidaTxtPlacarPenalti"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/PartidaTxtPlacar"
+                android:layout_toLeftOf="@id/PartidaImgEscudoVisit"
+                android:layout_toRightOf="@id/PartidaTxtTimeCasa" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout4"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/relativeLayout3"
+            android:layout_alignBottom="@id/relativeLayout3"
+            android:layout_alignTop="@id/relativeLayout3"
+            android:gravity="center">
+            <TextView
+                android:text="TIME VISIT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/PartidaTxtTimeVisit"
+                android:textSize="16dip"
+                android:textStyle="bold"
+                android:gravity="center" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/PartidaListViewLances" />
+</LinearLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1">
+        <TextView xmlns:tools="http://schemas.android.com/tools"
+            android:text="TEMPO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/LanceTxtTempo"
+            android:textColor="@color/VerdePadrao"
+            android:visibility="visible"
+            android:layout_margin="12px"
+            tools:visibility="visible" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout2"
+        android:layout_margin="12px">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout3"
+            android:layout_marginBottom="5px"
+            android:gravity="center_vertical">
+            <ImageView
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_width="48px"
+                android:layout_height="48px"
+                android:id="@+id/LanceImgJogador" />
+            <ImageView
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_width="48px"
+                android:layout_height="48px"
+                android:id="@+id/LanceImgClube" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout4"
+                android:layout_marginLeft="5px"
+                android:gravity="center">
+                <TextView
+                    android:text="NOME JOGADOR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/LanceTxtNomeJogador" />
+                <TextView
+                    android:text="POSIÇÃO JOGADOR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/LanceTxtPosicaoJogador" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LanceTxtTitulo"
+            android:textSize="16dip"
+            android:text="TITULO"
+            android:textStyle="bold" />
+        <TextView
+            android:text="SUBTITULO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LanceTxtSubtitulo"
+            android:textSize="12dip"
+            android:visibility="gone" />
+        <TextView
+            android:text="TEXTO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LanceTxtTexto"
+            android:layout_marginBottom="5px"
+            android:layout_marginTop="5px" />
+        <ImageView
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/LanceImgFoto"
+            android:cropToPadding="true"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center" />
+    </LinearLayout>
+</LinearLayout>

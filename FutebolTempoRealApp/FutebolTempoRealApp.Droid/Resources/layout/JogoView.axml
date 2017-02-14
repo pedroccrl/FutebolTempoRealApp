@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <GridLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gridLayout1"
+        android:paddingBottom="12px">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:minHeight="25px"
+            android:id="@+id/linearLayout1"
+            android:layout_gravity="center_horizontal"
+            android:padding="12px">
+            <TextView
+                android:text="SIGLA CASA"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/JogoTxtSiglaCasa"
+                android:gravity="center_vertical"
+                android:layout_marginRight="5px"
+                android:textStyle="bold" />
+            <ImageView
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_width="36px"
+                android:layout_height="36px"
+                android:id="@+id/JogoImgEscudoCasa" />
+            <TextView
+                android:text="PLACAR"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/JogoTxtPlacar"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5px"
+                android:layout_marginRight="5px"
+                android:textStyle="bold" />
+            <ImageView
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_width="36px"
+                android:layout_height="36px"
+                android:id="@+id/JogoImgEscudoVisit" />
+            <TextView
+                android:text="SIGLA VISIT"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/JogoTxtSiglaVisit"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5px"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <TextView
+            android:text="INFORMAÇÕES"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:id="@+id/JogoTxtInfo"
+            android:layout_gravity="center_horizontal" />
+        <TextView
+            android:text="INFORMAÇÕES 2"
+            android:id="@+id/JogoTxtStatus"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#50FF50" />
+    </GridLayout>
+</LinearLayout>
