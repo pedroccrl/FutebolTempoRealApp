@@ -31,7 +31,7 @@ namespace FutebolTempoRealApp.ViewModel
         public PartidaViewModel(Jogo jogo)
         {
             Jogo = jogo;
-            //Jogo.url = "http://globoesporte.globo.com/pr/futebol/libertadores/jogo/08-02-2017/millonarios-atletico-pr/mensagens.json";
+            Jogo.url = "http://globoesporte.globo.com/pr/futebol/libertadores/jogo/08-02-2017/millonarios-atletico-pr";
 
             TimeCasa = new EscudoTimeId
             {
@@ -55,15 +55,14 @@ namespace FutebolTempoRealApp.ViewModel
 
             var lances = JsonConvert.DeserializeObject<List<Lance>>(json);
 
-            var lancesAlteracao = lances.FindAll(l => l.operacao == "ALTERACAO");
+            var lancesAlteracao = lances.FindAll(l => l.operacao == "ALTERACAO" || l.operacao == "EXCLUSAO");
             foreach (var item in lancesAlteracao)
             {
                 var lance = lances.Find(l => l.id == item.id);
-                lances.Remove(item);
-                lance = item;
+                if (lance != null) lances.Remove(lance);
             }
             lances.Reverse();
-            var lancesGrupo = from lance in lances
+            var lancesGrupo = from lance in lances where lance.tipo != "LANCE_TWITTER"
                               group lance by lance.periodo into lanceGrupo
                               select lanceGrupo;
 
@@ -74,8 +73,6 @@ namespace FutebolTempoRealApp.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        
     }
 
     public class EscudoTimeId

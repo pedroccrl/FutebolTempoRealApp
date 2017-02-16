@@ -8,11 +8,12 @@ using Android.Widget;
 using Android.OS;
 using FutebolTempoRealApp.Droid.Adapters;
 using Newtonsoft.Json;
+using Android.Support.V7.App;
 
 namespace FutebolTempoRealApp.Droid
 {
 	[Activity (Label = "FutebolTempoRealApp.Droid", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    public class MainActivity : AppCompatActivity
     {
         ViewModel.CentralViewModel ViewModel;
         ListView ListViewCentral;
@@ -36,7 +37,7 @@ namespace FutebolTempoRealApp.Droid
 
             var partida = item.Item;
 
-            var partidaIntent = new Intent(this, typeof(PartidaActivity));
+            var partidaIntent = new Intent(this, typeof(PartidaPageActivity));
             partidaIntent.PutExtra("Partida", JsonConvert.SerializeObject(partida));
 
             StartActivity(partidaIntent);

@@ -4,17 +4,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minWidth="25px"
-    android:minHeight="25px">
+    android:minWidth="25dp"
+    android:minHeight="25dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/relativeLayout1"
-        android:layout_marginLeft="12px"
-        android:layout_marginRight="12px">
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp">
         <RelativeLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/relativeLayout2"
@@ -32,20 +32,21 @@
                 android:gravity="center" />
         </RelativeLayout>
         <RelativeLayout
-            android:minWidth="128px"
-            android:minHeight="25px"
+            android:minWidth="128dp"
+            android:minHeight="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/relativeLayout3"
             android:layout_centerInParent="true">
             <ImageView
                 android:src="@android:drawable/ic_menu_gallery"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/PartidaImgEscudoCasa"
                 android:layout_centerVertical="true"
-                android:layout_margin="8px"
-                android:layout_toLeftOf="@+id/PartidaTxtPlacar" />
+                android:layout_margin="8dp"
+                android:layout_toLeftOf="@+id/PartidaTxtPlacar"
+                android:scaleType="fitXY" />
             <TextView
                 android:text="0 x 0"
                 android:layout_width="wrap_content"
@@ -57,12 +58,13 @@
                 android:layout_centerInParent="true" />
             <ImageView
                 android:src="@android:drawable/ic_menu_gallery"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_toRightOf="@id/PartidaTxtPlacar"
                 android:id="@+id/PartidaImgEscudoVisit"
                 android:layout_centerVertical="true"
-                android:layout_margin="8px" />
+                android:layout_margin="8dp"
+                android:scaleType="fitXY" />
             <TextView
                 android:text="(0 x 0)"
                 android:layout_width="wrap_content"
@@ -74,8 +76,8 @@
                 android:layout_toRightOf="@id/PartidaTxtTimeCasa" />
         </RelativeLayout>
         <RelativeLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/relativeLayout4"
@@ -95,8 +97,8 @@
         </RelativeLayout>
     </RelativeLayout>
     <ListView
-        android:minWidth="25px"
-        android:minHeight="25px"
+        android:minWidth="25dp"
+        android:minHeight="25dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/PartidaListViewLances" />

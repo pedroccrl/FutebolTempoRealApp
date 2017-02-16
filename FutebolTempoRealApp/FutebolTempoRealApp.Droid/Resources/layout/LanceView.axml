@@ -13,9 +13,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/LanceTxtTempo"
-            android:textColor="@color/VerdePadrao"
+            android:textColor="@color/primary_dark"
             android:visibility="visible"
-            android:layout_margin="12px"
+            android:layout_margin="12dp"
             tools:visibility="visible" />
     </LinearLayout>
     <LinearLayout
@@ -23,30 +23,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/linearLayout2"
-        android:layout_margin="12px">
+        android:layout_margin="12dp">
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/linearLayout3"
-            android:layout_marginBottom="5px"
+            android:layout_marginBottom="5dp"
             android:gravity="center_vertical">
             <ImageView
                 android:src="@android:drawable/ic_menu_gallery"
-                android:layout_width="48px"
-                android:layout_height="48px"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:id="@+id/LanceImgJogador" />
             <ImageView
                 android:src="@android:drawable/ic_menu_gallery"
-                android:layout_width="48px"
-                android:layout_height="48px"
-                android:id="@+id/LanceImgClube" />
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/LanceImgClube"
+                android:scaleType="fitXY" />
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/linearLayout4"
-                android:layout_marginLeft="5px"
+                android:layout_marginLeft="5dp"
                 android:gravity="center">
                 <TextView
                     android:text="NOME JOGADOR"
@@ -79,15 +80,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/LanceTxtTexto"
-            android:layout_marginBottom="5px"
-            android:layout_marginTop="5px" />
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
         <ImageView
-            android:src="@android:drawable/ic_menu_gallery"
+            android:src="@drawable/jogo_fundo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/LanceImgFoto"
-            android:cropToPadding="true"
             android:adjustViewBounds="true"
-            android:layout_gravity="center" />
+            android:scaleType="fitStart" />
     </LinearLayout>
 </LinearLayout>

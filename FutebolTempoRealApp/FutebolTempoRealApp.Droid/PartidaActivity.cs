@@ -15,6 +15,7 @@ using FutebolTempoRealApp.Droid.Adapters;
 
 namespace FutebolTempoRealApp.Droid
 {
+    [Obsolete("Usar PartidaPageActivity com SlidingTabs")]
     [Activity(Label = "PartidaActivity")]
     public class PartidaActivity : Activity
     {
@@ -25,7 +26,7 @@ namespace FutebolTempoRealApp.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Partida);
+            SetContentView(Resource.Layout.PartidaLances);
 
             var serializado = Intent.GetStringExtra("Partida");
             Jogo = JsonConvert.DeserializeObject<Model.Api.Jogo>(Intent.GetStringExtra("Partida"));
@@ -55,7 +56,7 @@ namespace FutebolTempoRealApp.Droid
         {
             if (e.PropertyName == "Lances")
             {
-                ListViewLances.Adapter = new LanceAdapter(this, ViewModel.Lances);
+                //ListViewLances.Adapter = new LanceAdapter(this, ViewModel.Lances);
             }
         }
     }

@@ -95,8 +95,12 @@
   <ItemGroup>
     <Compile Include="Adapters\CentralAdapter.cs" />
     <Compile Include="Adapters\LanceAdapter.cs" />
+    <Compile Include="Adapters\PartidaPageAdapter.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="PartidaPageActivity.cs" />
+    <Compile Include="PartidaPageFragment.cs" />
     <Compile Include="PartidaActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,7 +111,7 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\layout\Partida.axml">
+    <AndroidResource Include="Resources\layout\PartidaLances.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\HeaderView.axml">
@@ -117,6 +121,15 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\LanceView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\PartidaPage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\CustomTab.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Toolbar.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -135,6 +148,23 @@
     <AndroidResource Include="Resources\values\Colors.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values-v21\styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\jogo_fundo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\styles.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\theme.xml" />
   </ItemGroup>
   <Import Project="..\FutebolTempoRealApp\FutebolTempoRealApp.projitems" Label="Shared" Condition="Exists('..\FutebolTempoRealApp\FutebolTempoRealApp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

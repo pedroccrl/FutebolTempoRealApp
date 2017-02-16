@@ -12,6 +12,7 @@ namespace FutebolTempoRealApp.Model
         {
             foreach (var grupo in grupos)
             {
+                if (string.IsNullOrWhiteSpace(grupo.Key)) continue;
                 Add(new ItemSection<T>(grupo.Key));
                 foreach (var item in grupo)
                 {
