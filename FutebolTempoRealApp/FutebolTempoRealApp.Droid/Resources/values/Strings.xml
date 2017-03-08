@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="hello">Hello World, Click Me!</string>
-	<string name="app_name">FutebolTempoRealApp.Droid</string>
+	<string name="app_name">Futebol TR</string>
+  <string name="AdUnitMainId">ca-app-pub-9314403185539954/4558709745</string>
+  <string name="AdAppMainId"></string>
 </resources>

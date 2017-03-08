@@ -15,6 +15,7 @@ using Com.Squareup.Picasso;
 
 namespace FutebolTempoRealApp.Droid.Adapters
 {
+    [Obsolete("Usar RecyclerView e seu Adapter")]
     class LanceAdapter : BaseAdapter<ItemSection<Lance>>
     {
         SectionList<Lance> Lances;
@@ -82,7 +83,7 @@ namespace FutebolTempoRealApp.Droid.Adapters
                 Picasso.With(Inflater.Context).Load(lance.Jogador.FotoUrl).Into(JogadorFoto);
                 Picasso.With(Inflater.Context).Load(lance.Jogador.EscudoClubeUrl).Into(JogadorClube);
 
-                if (!string.IsNullOrWhiteSpace(lance.foto_url)) Picasso.With(Inflater.Context).Load(lance.foto_url).Into(Foto);
+                if (!string.IsNullOrWhiteSpace(lance.FotoUrl)) Picasso.With(Inflater.Context).Load(lance.FotoUrl).Into(Foto);
                 else Foto.Visibility = ViewStates.Gone;
                 if (string.IsNullOrWhiteSpace(lance.Jogador.EscudoClubeUrl)) JogadorClube.Visibility = ViewStates.Gone;
                 if (string.IsNullOrWhiteSpace(lance.Jogador.FotoUrl)) JogadorFoto.Visibility = ViewStates.Gone;

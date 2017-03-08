@@ -1,4 +1,5 @@
 ﻿using FutebolTempoRealApp.ViewModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +29,11 @@ namespace FutebolTempoRealApp.Model.Api
             set
             {
                 _texto = value;
+                if (_texto.Contains("blockquote"))
+                {
+                    _tipo = LanceType.TwitterEmbed;
+                    return;
+                }
                 _texto = HtmlRemoval.RemoveHTML(_texto);
                 _texto = HtmlRemoval.StripTagsRegex(_texto);
                 _texto = HtmlRemoval.StripTagsRegexCompiled(_texto);
@@ -40,7 +46,7 @@ namespace FutebolTempoRealApp.Model.Api
         public string foto_credito { get; set; }
         public Jogo jogo { get; set; }
         public string titulo { get; set; }
-        public string foto_url { get; set; }
+        public string foto_url { private get; set; }
         public int? time { get; set; }
         public string foto_titulo { get; set; }
         public bool video_multicamera { get; set; }
@@ -74,6 +80,7 @@ namespace FutebolTempoRealApp.Model.Api
                     jogador.Nome = penalti?.nome_jogador;
                     jogador.NomeTime = nome_time;
                 }
+                else if (tipo == "LANCE_SUBSTITUICAO") jogador.NomeTime = nome_time;
 
                 //jogador.EscudoClubeUrl = PartidaViewModel.TimeCasa.TimeId == jogador.IdTimeGlobo ? PartidaViewModel.TimeCasa.EscudoUrl : PartidaViewModel.TimeVisitante.EscudoUrl;
                 if (jogador.NomeTime == jogo.equipe_mandante.nome)
@@ -92,11 +99,83 @@ namespace FutebolTempoRealApp.Model.Api
         {
             get
             {
-                if (periodo != "Pré-Jogo" && periodo != "Pós Jogo" && periodo != "Penalidades") return $"{momento}'";
+                if (periodo != "Pré-Jogo" && periodo != "Pós Jogo" && periodo != "Penalidades" && periodo!="Intervalo" && periodo != "Fim de jogo") return $"{Periodo} {momento}'";
                 else return string.Empty;
             }
         }
-        
+        public string Periodo
+        {
+            get
+            {
+                if (periodo == "1º tempo") return "1º";
+                else if (periodo == "2º tempo") return "2º";
+                else return periodo;
+            }
+        }
+        private LanceTwitter _lanceTwitter;
+
+        public LanceTwitter LanceTwitter
+        {
+            get
+            {
+                if (tipo != "LANCE_TWITTER") return null;
+                if (_lanceTwitter == null)
+                {
+                    //var json = texto.Replace("\\","");
+                    var json = texto;
+                    var twitter = JsonConvert.DeserializeObject<LanceTwitter.Twitter>(json);
+                    _lanceTwitter = new LanceTwitter { Lance = twitter };
+                }
+                return _lanceTwitter;
+            }
+            private set { _lanceTwitter = value; }
+        }
+
+        private LanceType _tipo = LanceType.SemLance;
+        public LanceType Tipo
+        {
+            get
+            {
+                if (_tipo != LanceType.SemLance) return _tipo;
+                if (tipo == "LANCE_GOL")
+                {
+                    _tipo = LanceType.Gol;
+                }
+                else if (tipo == "LANCE_CARTAO")
+                {
+                    _tipo = LanceType.Cartao;
+                }
+                else if (tipo == "LANCE_TWITTER")
+                {
+                    _tipo = LanceType.Twitter;
+                }
+                else if (tipo == "LANCE" || tipo == "LANCE_IMPORTANTE" || tipo == "POS_LANCE_DESTAQUE" || tipo == "POS_LANCE_OJOGO")
+                {
+                    if (texto.Contains("blockquote")) _tipo = LanceType.TwitterEmbed;
+                    else if (string.IsNullOrWhiteSpace(titulo)) _tipo = LanceType.SimplesSemTitulo;
+                    else _tipo = LanceType.Simples;
+                }
+                else if (tipo == "LANCE_SUBSTITUICAO") 
+                {
+                    _tipo = LanceType.Substituicao;
+                }
+
+                return _tipo;
+            }
+        }
+
+        public string FotoUrl
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(foto_url))
+                {
+                    if (!string.IsNullOrWhiteSpace(url_thumb_grande)) return url_thumb_grande;
+                    else return null;
+                }
+                return foto_url;
+            }
+        }
     }
     
     /// <summary>
@@ -191,4 +270,45 @@ namespace FutebolTempoRealApp.Model.Api
         public int atuacao_id { get; set; }
     }
 
+    public class LanceTwitter
+    {
+        public Twitter Lance { get; set; }
+
+        public class User
+        {
+            public string name { get; set; }
+            public string profile_image_url { get; set; }
+            public string screen_name { get; set; }
+            public string Perfil
+            {
+                get { return $"@{screen_name}"; }
+            }
+        }
+
+        public class Twitter
+        {
+            public string text { get; set; }
+            public User user { get; set; }
+            public List<string> photo { get; set; }
+            public string FotoUrl
+            {
+                get { if (photo != null && photo.Count > 0) return photo[0]; else return null; }
+            }
+
+        }
+    }
+
+    public enum LanceType
+    {
+        Titulo,
+        Simples,
+        SimplesSemTitulo,
+        Twitter,
+        TwitterEmbed,
+        Gol,
+        Cartao,
+        Substituicao,
+        Video,
+        SemLance = -1,
+    }
 }

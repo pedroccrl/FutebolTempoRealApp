@@ -6,9 +6,9 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:background="@color/clara"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:background="@color/clara">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
             <TextView xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/LanceTxtTempo"
+                android:id="@+id/LanceGolTxtTempo"
                 android:textColor="@color/primary_dark"
                 android:visibility="visible"
                 android:layout_margin="12dp" />
@@ -38,11 +38,11 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:id="@+id/LanceImgJogador" />
+                    android:id="@+id/LanceGolImgJogador" />
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:id="@+id/LanceImgClube"
+                    android:id="@+id/LanceGolImgClube"
                     android:scaleType="fitXY" />
                 <LinearLayout
                     android:orientation="vertical"
@@ -54,34 +54,29 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/LanceTxtNomeJogador" />
+                        android:id="@+id/LanceGolTxtNomeJogador" />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/LanceTxtPosicaoJogador" />
+                        android:id="@+id/LanceGolTxtPosicaoJogador" />
                 </LinearLayout>
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/LanceTxtTitulo"
+                android:id="@+id/LanceGolTxtTitulo"
                 android:textSize="16dip"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/LanceTxtSubtitulo"
-                android:textSize="12dip" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/LanceTxtTexto"
+                android:id="@+id/LanceGolTxtTexto"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/LanceImgFoto"
+                android:id="@+id/LanceGolImgFoto"
                 android:adjustViewBounds="true"
                 android:scaleType="fitStart" />
         </LinearLayout>

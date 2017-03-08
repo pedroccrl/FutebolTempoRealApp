@@ -27,11 +27,11 @@ namespace FutebolTempoRealApp.ViewModel
 
         public static EscudoTimeId TimeCasa;
         public static EscudoTimeId TimeVisitante;
-
         public PartidaViewModel(Jogo jogo)
         {
             Jogo = jogo;
-            Jogo.url = "http://globoesporte.globo.com/pr/futebol/libertadores/jogo/08-02-2017/millonarios-atletico-pr";
+            //Jogo.url = "http://globoesporte.globo.com/pr/futebol/libertadores/jogo/08-02-2017/millonarios-atletico-pr";
+            //Jogo.url = "http://globoesporte.globo.com/rj/futebol/campeonato-carioca/jogo/19-02-2017/flamengo-madureira";
 
             TimeCasa = new EscudoTimeId
             {
@@ -62,7 +62,7 @@ namespace FutebolTempoRealApp.ViewModel
                 if (lance != null) lances.Remove(lance);
             }
             lances.Reverse();
-            var lancesGrupo = from lance in lances where lance.tipo != "LANCE_TWITTER"
+            var lancesGrupo = from lance in lances 
                               group lance by lance.periodo into lanceGrupo
                               select lanceGrupo;
 
@@ -73,6 +73,7 @@ namespace FutebolTempoRealApp.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        
     }
 
     public class EscudoTimeId

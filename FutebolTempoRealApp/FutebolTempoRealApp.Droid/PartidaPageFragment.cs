@@ -13,6 +13,7 @@ using Android.Animation;
 using static Android.Animation.Animator;
 using Android.Support.V7.Widget;
 using Android.Widget;
+using ClienteResenha.ViewModel;
 
 namespace FutebolTempoRealApp.Droid
 {
@@ -35,7 +36,11 @@ namespace FutebolTempoRealApp.Droid
                 case PartidasPages.Lances:
                     var view = inflater.Inflate(Resource.Layout.PartidaLances, container, false);
 
-                    var listViewLances = view.FindViewById<ListView>(Resource.Id.PartidaListViewLances);
+                    //var listViewLances = view.FindViewById<ListView>(Resource.Id.PartidaRecyclerViewLances);
+                    var recyclerViewLances = view.FindViewById<RecyclerView>(Resource.Id.PartidaRecyclerViewLances);
+                    recyclerViewLances.SetLayoutManager(new LinearLayoutManager(recyclerViewLances.Context));
+                    recyclerViewLances.SetAdapter(new LanceRecyclerAdapter(Activity, ViewModel));
+
 
                     view.FindViewById<TextView>(Resource.Id.PartidaTxtTimeCasa).Text = ViewModel.Jogo.time_casa.nome;
                     view.FindViewById<TextView>(Resource.Id.PartidaTxtPlacar).Text = ViewModel.Jogo.Placar;
@@ -44,110 +49,59 @@ namespace FutebolTempoRealApp.Droid
                     Picasso.With(inflater.Context).Load(ViewModel.Jogo.time_visitante.escudo).Into(view.FindViewById<ImageView>(Resource.Id.PartidaImgEscudoVisit));
                     view.FindViewById<TextView>(Resource.Id.PartidaTxtPlacarPenalti).Visibility = ViewStates.Gone;
 
-                    if (ViewModel.Lances != null) listViewLances.Adapter = new LanceAdapter(this.GetLayoutInflater(savedInstanceState), ViewModel.Lances);
-                    int verticalOffset = 0;
-                    bool scrollingUp = false;
-                    float TOOLBAR_ELEVATION = 14f;
-                    ViewModel.PropertyChanged += ((s0, e0) =>
-                     {
-                         if (e0.PropertyName == "Lances")
-                         {
-                             listViewLances.Adapter = new LanceAdapter(this.GetLayoutInflater(savedInstanceState), ViewModel.Lances);
-                             Toast.MakeText(inflater.Context, "Novos Lances", ToastLength.Long);
-
-                             listViewLances.Scroll += ((s, e) =>
-                             {
-                                 if (e.View.GetChildAt(e.FirstVisibleItem)?.Top == null) return;
-                                 int dy = e.View.GetChildAt(e.FirstVisibleItem).Top;
-                                 verticalOffset += dy;
-                                 scrollingUp = dy > 0;
-                                 int toolbarYOffset = (int)(dy - tToolbar.TranslationY);
-                                 tToolbar.Animate().Cancel();
-                                 if (scrollingUp)
-                                 {
-                                     if (toolbarYOffset < tToolbar.Height)
-                                     {
-                                         if (verticalOffset > tToolbar.Height)
-                                         {
-                                             toolbarSetElevation(TOOLBAR_ELEVATION);
-                                         }
-                                         tToolbar.TranslationY = -toolbarYOffset;
-                                     }
-                                     else
-                                     {
-                                         toolbarSetElevation(0);
-                                         tToolbar.TranslationY = -tToolbar.Height;
-                                     }
-                                 }
-                                 else
-                                 {
-                                     if (toolbarYOffset < 0)
-                                     {
-                                         if (verticalOffset <= 0)
-                                         {
-                                             toolbarSetElevation(0);
-                                         }
-                                         tToolbar.TranslationY = 0;
-                                     }
-                                     else
-                                     {
-                                         if (verticalOffset > tToolbar.Height)
-                                         {
-                                             toolbarSetElevation(TOOLBAR_ELEVATION);
-                                         }
-                                         tToolbar.TranslationY = -toolbarYOffset;
-                                     }
-                                 }
-                             });
-                             listViewLances.ScrollStateChanged += ((s, e) =>
-                             {
-                                 if (e.ScrollState == ScrollState.Idle)
-                                 {
-                                     if (scrollingUp)
-                                     {
-                                         if (verticalOffset > tToolbar.Height)
-                                         {
-                                             toolbarAnimateHide();
-                                         }
-                                         else
-                                         {
-                                             toolbarAnimateShow(verticalOffset);
-                                         }
-                                     }
-                                     else
-                                     {
-                                         if (tToolbar.TranslationY < tToolbar.Height * -0.6 && verticalOffset > tToolbar.Height)
-                                         {
-                                             toolbarAnimateHide();
-                                         }
-                                         else
-                                         {
-                                             toolbarAnimateShow(verticalOffset);
-                                         }
-                                     }
-                                 }
-                             });
-                         }
-                     });
-
-                    
-
-                    tToolbar = ((Android.App.Activity)ParentContext).FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.PartidaToolbar);
-                    tToolbar.AnimationStart += (s, e) =>
-                    {
-                        toolbarSetElevation(verticalOffset == 0 ? 0 : TOOLBAR_ELEVATION);
-                    };
-                    tToolbar.AnimationEnd += (s, e) =>
-                    {
-                        toolbarSetElevation(0);
-                    };
-                    
+                             
                     
                     return view;
                 case PartidasPages.Midia:
                     break;
                 case PartidasPages.Resenha:
-                    break;
+                    var rView = inflater.Inflate(Resource.Layout.PartidaResenha, container, false);
+
+                    var btnConn = rView.FindViewById<Button>(Resource.Id.PartidaResenhaBtnConectar);
+                    var txtNick = rView.FindViewById<EditText>(Resource.Id.PartidaResenhaTxtApelido);
+                    var txtStatus = rView.FindViewById<TextView>(Resource.Id.PartidaResenhaTxtStatus);
+                    var recycleViewChat = rView.FindViewById<RecyclerView>(Resource.Id.PartidaResenhaRecyclerView);
+                    var offlineLayout = rView.FindViewById<LinearLayout>(Resource.Id.linearLayout1);
+                    var resViewModel = new ResenhaViewModel(ViewModel.Jogo.transmissao_id.ToString(), Model.App.ResenhaIp, Model.App.ResenhaPorta);
+                    var registroLayout = rView.FindViewById<LinearLayout>(Resource.Id.linearLayout2);
+
+                    var chatAdapter = new ChatRecyclerAdapter(Activity, resViewModel);
+                    recycleViewChat.SetLayoutManager(new LinearLayoutManager(recycleViewChat.Context));
+                    recycleViewChat.SetAdapter(chatAdapter);
+
+                    btnConn.Click += (s, e) =>
+                    {
+                        resViewModel.Registrar(txtNick.Text);
+                    };
+
+                    resViewModel.CollectionChanged += (s, e) =>
+                    {
+                        chatAdapter.NotifyDataSetChanged();
+                    };
+
+                    resViewModel.Conexao.PropertyChanged += (s, e) =>
+                    {
+                        var conexao = resViewModel.Conexao;
+                        if (e.PropertyName == "EstaConectado") 
+                        {
+                            if (conexao.EstaConectado)
+                            {
+                                txtStatus.Text = "Conectado ao Servidor";
+                                offlineLayout.Visibility = ViewStates.Gone;
+                            }
+                        }
+                        if (e.PropertyName == "Registrado")
+                        {
+                            if (conexao.Registrado)
+                            {
+                                txtStatus.Text = $"Online como '{resViewModel.Usuario.Nome}'";
+                                registroLayout.Visibility = ViewStates.Gone;
+                               
+                            }
+                        }
+                    };
+
+                    return rView;
                 default:
                     break;
             }
@@ -156,34 +110,9 @@ namespace FutebolTempoRealApp.Droid
         }
 
         Android.Support.V7.Widget.Toolbar tToolbar;
-        private void toolbarAnimateHide()
-        {
-            tToolbar.Animate()
-                .TranslationY(-tToolbar.Height)
-                .SetInterpolator(new LinearInterpolator())
-                .SetDuration(180);
-        }
-
-        private void toolbarAnimateShow(int vOffset)
-        {
-            tToolbar.Animate()
-                .TranslationY(0)
-                .SetInterpolator(new LinearInterpolator())
-                .SetDuration(180);
-        }
-
-        private void toolbarSetElevation(float elevation)
-        {
-            // setElevation() only works on Lollipop
-
-            if (Build.VERSION_CODES.Lollipop == BuildVersionCodes.Lollipop)
-            {
-                tToolbar.Elevation = elevation;
-            }
-        }
     }
 
-    public class ToolbarHidingAnimation : AbsListView.IOnScrollListener, IAnimatorListener
+    public class ToolbarHidingAnimation : Java.Lang.Object, AbsListView.IOnScrollListener, IAnimatorListener
     {
         /// <summary>
         /// Keeps track of the overall vertical offset in the list
@@ -315,18 +244,6 @@ namespace FutebolTempoRealApp.Droid
         }
 
         #region Não usado
-        public IntPtr Handle
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
 
         public void OnAnimationCancel(Animator animation)
         {
@@ -339,38 +256,7 @@ namespace FutebolTempoRealApp.Droid
         }
         #endregion
     }
-
-    public class Teste : AbsListView.IOnScrollChangeListener
-    {
-        public IntPtr Handle
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnScrollStateChanged(AbsListView view, [GeneratedEnum] ScrollState scrollState)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
+    
     public enum PartidasPages
     {
         Lances,

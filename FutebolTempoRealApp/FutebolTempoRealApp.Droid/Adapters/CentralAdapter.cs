@@ -12,6 +12,7 @@ using Android.Widget;
 using FutebolTempoRealApp.Model.Api;
 using Com.Squareup.Picasso;
 using FutebolTempoRealApp.Model;
+using Android.Gms.Ads;
 
 namespace FutebolTempoRealApp.Droid.Adapters
 {

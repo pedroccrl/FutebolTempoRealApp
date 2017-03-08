@@ -96,10 +96,9 @@
                 android:gravity="center" />
         </RelativeLayout>
     </RelativeLayout>
-    <ListView
-        android:minWidth="25dp"
-        android:minHeight="25dp"
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/PartidaListViewLances" />
+        android:layout_height="wrap_content"
+        android:id="@+id/PartidaRecyclerViewLances"
+        android:background="@color/window_background" />
 </LinearLayout>

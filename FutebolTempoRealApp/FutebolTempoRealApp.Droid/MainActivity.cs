@@ -9,6 +9,7 @@ using Android.OS;
 using FutebolTempoRealApp.Droid.Adapters;
 using Newtonsoft.Json;
 using Android.Support.V7.App;
+using Android.Gms.Ads;
 
 namespace FutebolTempoRealApp.Droid
 {
@@ -20,7 +21,18 @@ namespace FutebolTempoRealApp.Droid
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+
+            Model.App.SaveAndLoad = new SaveAndLoad(this);
+
             SetContentView(Resource.Layout.Main);
+
+            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.MainToolbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.Title = "Jogos de Hoje";
+
+            var adView = FindViewById<AdView>(Resource.Id.adView1);
+            var adRequest = new AdRequest.Builder().Build();
+            adView.LoadAd(adRequest);
 
             ViewModel = new ViewModel.CentralViewModel();
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;

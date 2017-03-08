@@ -11,4 +11,5 @@
   <color name="backgroundDark">#212121</color>
   <color name="divider">#BDBDBD</color>
   <color name="clara">#FFFFFF</color>
+  <color name="window_background">#FFF5F5F5</color>
 </resources>

@@ -40,7 +40,9 @@ namespace FutebolTempoRealApp.ViewModel
 
         public async void GetJogosCentral()
         {
-            var json = await new HttpClient().GetStringAsync(URL_CENTRAL);
+            var http = new HttpClient();
+            var json = await http.GetStringAsync(URL_CENTRAL);
+            if (json == string.Empty) return;
             var central = JsonConvert.DeserializeObject<Model.Api.Central>(json);
 
             central.jogos.Reverse();

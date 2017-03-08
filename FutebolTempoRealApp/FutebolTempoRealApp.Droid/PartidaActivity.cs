@@ -31,7 +31,7 @@ namespace FutebolTempoRealApp.Droid
             var serializado = Intent.GetStringExtra("Partida");
             Jogo = JsonConvert.DeserializeObject<Model.Api.Jogo>(Intent.GetStringExtra("Partida"));
 
-            ListViewLances = this.FindViewById<ListView>(Resource.Id.PartidaListViewLances);
+            ListViewLances = this.FindViewById<ListView>(Resource.Id.PartidaRecyclerViewLances);
 
             ViewModel = new ViewModel.PartidaViewModel(Jogo);
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;

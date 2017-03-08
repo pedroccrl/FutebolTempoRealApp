@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+  <RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+      p1:layout_width="match_parent"
+      p1:layout_height="wrap_content"
+      p1:id="@+id/relativeLayout1"
+      p1:background="@color/clara"
+      p1:layout_marginTop="8dp"
+      p1:padding="12dp">
+    <TextView
+        p1:text="TWITTER"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/textView1"
+        p1:gravity="center"
+        p1:layout_centerVertical="false"
+        p1:layout_marginTop="8dp" />
+    <RelativeLayout
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:layout_toRightOf="@id/textView1"
+        p1:id="@+id/relativeLayout2"
+        p1:layout_marginLeft="12dp">
+      <ImageView
+          p1:src="@android:drawable/ic_menu_gallery"
+          p1:layout_width="38dp"
+          p1:layout_height="38dp"
+          p1:id="@+id/LanceTwitterImgAutor"
+          p1:layout_marginLeft="12dp" />
+      <LinearLayout
+          p1:orientation="vertical"
+          p1:layout_width="wrap_content"
+          p1:layout_height="wrap_content"
+          p1:layout_toRightOf="@id/LanceTwitterImgAutor"
+          p1:id="@+id/linearLayout1"
+          p1:layout_marginTop="8dp">
+        <TextView
+            p1:text="Text"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/LanceTwitterTxtAutorNome" />
+        <TextView
+            p1:text="Text"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/LanceTwitterTxtAutorTwitter" />
+      </LinearLayout>
+      <TextView
+          p1:text="Text"
+          p1:layout_width="wrap_content"
+          p1:layout_height="wrap_content"
+          p1:layout_below="@id/LanceTwitterImgAutor"
+          p1:id="@+id/LanceTwitterTxtTexto"
+          p1:layout_marginLeft="12dp"
+          p1:layout_marginTop="6dp" />
+      <ImageView
+          p1:src="@android:drawable/ic_menu_gallery"
+          p1:layout_width="match_parent"
+          p1:layout_height="wrap_content"
+          p1:layout_below="@id/LanceTwitterTxtTexto"
+          p1:id="@+id/LanceTwitterImgFoto"
+          p1:layout_marginLeft="12dp"
+          p1:layout_marginTop="6dp" />
+    </RelativeLayout>
+  </RelativeLayout>
+</LinearLayout>

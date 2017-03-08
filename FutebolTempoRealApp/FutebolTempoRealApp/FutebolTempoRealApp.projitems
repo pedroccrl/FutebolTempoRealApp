@@ -11,9 +11,10 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Model\Api\Central.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Api\Lance.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\HtmlRemoval.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ISaveAndLoad.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\SectionList.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MyClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\CentralViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\PartidaViewModel.cs" />
   </ItemGroup>
