@@ -79,6 +79,8 @@ namespace FutebolTempoRealApp.Droid
                         chatAdapter.NotifyDataSetChanged();
                     };
 
+                    
+
                     resViewModel.Conexao.PropertyChanged += (s, e) =>
                     {
                         var conexao = resViewModel.Conexao;
@@ -263,4 +265,6 @@ namespace FutebolTempoRealApp.Droid
         Midia,
         Resenha
     }
+
+    
 }

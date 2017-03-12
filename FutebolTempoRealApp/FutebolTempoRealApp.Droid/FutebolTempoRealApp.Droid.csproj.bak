@@ -15,7 +15,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidApplication>True</AndroidApplication>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AssemblyName>FutebolTempoRealApp.Droid</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -46,7 +46,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Picasso">
-      <HintPath>..\..\..\..\Libs\Picasso.dll</HintPath>
+      <HintPath>..\..\..\Picasso\Picasso\bin\Debug\Picasso.dll</HintPath>
+    </Reference>
+    <Reference Include="PinnedSectionListView">
+      <HintPath>..\..\..\PinnedSectionListView\PinnedSectionListView\bin\Debug\PinnedSectionListView.dll</HintPath>
     </Reference>
     <Reference Include="Sockets.Plugin, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\rda.SocketsForPCL.2.0.2\lib\MonoAndroid10\Sockets.Plugin.dll</HintPath>

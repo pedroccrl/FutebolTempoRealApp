@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FutebolTempoRealApp.Droid", "FutebolTempoRealApp\FutebolTempoRealApp.Droid\FutebolTempoRealApp.Droid.csproj", "{6A02F90F-BF8E-4717-B957-E5C41067CF40}"
 EndProject
@@ -19,11 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClienteResenha", "..\Resenh
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		FutebolTempoRealApp\FutebolTempoRealApp\FutebolTempoRealApp.projitems*{00e9c10d-bda5-42e0-9143-5381a31359d9}*SharedItemsImports = 4
 		..\ResenhaChat\SharedResenha\SharedResenha.projitems*{390910f6-cb38-4bfc-b057-7091960cbbdf}*SharedItemsImports = 4
+		FutebolTempoRealApp\FutebolTempoRealApp\FutebolTempoRealApp.projitems*{00e9c10d-bda5-42e0-9143-5381a31359d9}*SharedItemsImports = 4
 		FutebolTempoRealApp\FutebolTempoRealApp\FutebolTempoRealApp.projitems*{6a02f90f-bf8e-4717-b957-e5c41067cf40}*SharedItemsImports = 4
-		FutebolTempoRealApp\FutebolTempoRealApp\FutebolTempoRealApp.projitems*{88b2a37d-69b1-4d3c-9485-821219af778a}*SharedItemsImports = 13
 		FutebolTempoRealApp\FutebolTempoRealApp\FutebolTempoRealApp.projitems*{98d92ee1-3000-4f72-85a2-f4db04ccc552}*SharedItemsImports = 4
+		FutebolTempoRealApp\FutebolTempoRealApp\FutebolTempoRealApp.projitems*{88b2a37d-69b1-4d3c-9485-821219af778a}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
